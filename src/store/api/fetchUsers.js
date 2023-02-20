@@ -13,11 +13,10 @@ const fetchUsers = createAsyncThunk("users/fetch", async () => {
   const response = await axios.get(`${apiUrl}/users`);
 
   // dev only
-  // await pause(1000);  // 1 sec
+  await pause(10000); // 1 sec
 
   return response.data;
 });
-
 
 // add a pause for development purposes
 const pause = (duration) => {
