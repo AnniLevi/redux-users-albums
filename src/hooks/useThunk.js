@@ -19,3 +19,11 @@ export function useThunk(thunk) {
   );
   return [runThunk, isLoading, error];
 }
+
+// by default dispatch returns a promise which doesn't follow the conventional rules
+// this promise.then() gets called whether the request succeeds OR FAILS (instead of promise.catch())
+
+// promise.unwrap() returns a brand new promise which follows the conventional rules
+// promise.then() - if request succeeds
+// promise.catch()  - if request fails
+// promise.finally() - is called regardless of whether the request was successful or not
