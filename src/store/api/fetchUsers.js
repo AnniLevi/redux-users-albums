@@ -13,7 +13,7 @@ const fetchUsers = createAsyncThunk("users/fetch", async () => {
   const response = await axios.get(`${apiUrl}/users`);
 
   // dev only
-  // await pause(1000); // 1 sec
+  await pause(1000); // 1 sec
 
   // response.data will be returned inside the fulfilled action's payload
   return response.data;
