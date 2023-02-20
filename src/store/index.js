@@ -8,3 +8,4 @@ export const store = configureStore({
 });
 
 export * from "./api/fetchUsers";
+export * from "./api/addUser";

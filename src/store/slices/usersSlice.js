@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { fetchUsers } from "../api/fetchUsers";
+import { addUser } from "../api/addUser";
 
 const usersSlice = createSlice({
   name: "users",
@@ -9,6 +10,7 @@ const usersSlice = createSlice({
     error: null,
   },
   extraReducers(builder) {
+    // fetch all users
     builder.addCase(fetchUsers.pending, (state, action) => {
       // fetchUsers.pending === 'users/fetch/pending'
 
@@ -25,6 +27,19 @@ const usersSlice = createSlice({
       // error occurred with request
       state.isLoading = false;
       // in this case action.error is an error object
+      state.error = action.error;
+    });
+
+    // add new user
+    builder.addCase(addUser.pending, (state, action) => {
+      state.isLoading = true;
+    });
+    builder.addCase(addUser.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.data.push(action.payload);
+    });
+    builder.addCase(addUser.rejected, (state, action) => {
+      state.isLoading = false;
       state.error = action.error;
     });
   },
