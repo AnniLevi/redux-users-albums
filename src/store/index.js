@@ -7,6 +7,6 @@ export const store = configureStore({
   },
 });
 
-export * from "./api/fetchUsers";
-export * from "./api/addUser";
-export * from "./api/removeUser";
+export * from "./api/fetchUsersThunk";
+export * from "./api/addUserThunk";
+export * from "./api/removeUserThunk";

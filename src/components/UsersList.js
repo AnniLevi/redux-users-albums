@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { addUser, fetchUsers } from "../store";
+import { addUserThunk, fetchUsersThunk } from "../store";
 import { useThunk } from "../hooks/useThunk";
 import Button from "./Button";
 import Skeleton from "./Skeleton";
@@ -8,8 +8,8 @@ import UsersListItem from "./UsersListItem";
 
 function UsersList() {
   const [doFetchUsers, isLoadingUsers, loadingUsersError] =
-    useThunk(fetchUsers);
-  const [doCreateUser, isCreatingUser, creatingUserError] = useThunk(addUser);
+    useThunk(fetchUsersThunk);
+  const [doCreateUser, isCreatingUser, creatingUserError] = useThunk(addUserThunk);
 
   const { data } = useSelector((state) => {
     return state.users;
@@ -76,7 +76,7 @@ function UsersList() {
 
 
   // useEffect(() => {
-  //   dispatch(fetchUsers());
+  //   dispatch(fetchUsersThunk());
   // }, [dispatch]);
 
 
@@ -85,7 +85,7 @@ function UsersList() {
 
     // by default dispatch returns a promise which doesn't follow the conventional rules
     // this promise.then() gets called whether the request succeeds OR FAILS (instead of promise.catch())
-    dispatch(fetchUsers())
+    dispatch(fetchUsersThunk())
       .unwrap() // returns a brand new promise which follows the conventional rules
       // .then(() => setIsLoadingUsers(false))
       .catch((err) => {
@@ -97,7 +97,7 @@ function UsersList() {
 
   const handleUserAdd = () => {
     setIsCreatingUser(true);
-    dispatch(addUser())
+    dispatch(addUserThunk())
       .unwrap()
       .catch((err) => setCreatingUserError(err))
       .finally(() => setIsCreatingUser(false));

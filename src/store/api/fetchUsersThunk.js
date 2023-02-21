@@ -9,7 +9,7 @@ const apiUrl = process.env.REACT_APP_API_URL;
 // the action type will be generated as 'users/fetch/pending' when initially make a request
 // and 'users/fetch/fulfilled' when data will be fetched successfully
 // in case of error occurred during the request type will be 'users/fetch/rejected'
-const fetchUsers = createAsyncThunk("users/fetch", async () => {
+const fetchUsersThunk = createAsyncThunk("users/fetch", async () => {
   const response = await axios.get(`${apiUrl}/users`);
 
   // dev only
@@ -26,4 +26,4 @@ const pause = (duration) => {
   });
 };
 
-export { fetchUsers };
+export { fetchUsersThunk };

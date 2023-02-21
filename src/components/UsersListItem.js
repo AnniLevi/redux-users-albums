@@ -1,12 +1,12 @@
 import { GoTrashcan } from "react-icons/go";
 import Button from "./Button";
-import { removeUser } from "../store";
+import { removeUserThunk } from "../store";
 import { useThunk } from "../hooks/useThunk";
 import ExpandablePanel from "./ExpandablePanel";
 import AlbumsList from "./AlbumsList";
 
 function UsersListItem({ user }) {
-  const [doRemoveUser, isLoading, error] = useThunk(removeUser);
+  const [doRemoveUser, isLoading, error] = useThunk(removeUserThunk);
 
   const handleClick = () => {
     doRemoveUser(user);
