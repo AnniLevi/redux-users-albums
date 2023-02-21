@@ -22,4 +22,8 @@ setupListeners(store.dispatch);
 export * from "./api/fetchUsersThunk";
 export * from "./api/addUserThunk";
 export * from "./api/removeUserThunk";
-export { useFetchAlbumsQuery, useAddAlbumMutation } from "./api/albumsApi";
+export {
+  useFetchAlbumsQuery,
+  useAddAlbumMutation,
+  useRemoveAlbumMutation,
+} from "./api/albumsApi";
