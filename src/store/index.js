@@ -13,9 +13,13 @@ export const store = configureStore({
   },
 });
 
+// dev only
+// make access to store from the console
+// window.store = store;
+
 setupListeners(store.dispatch);
 
 export * from "./api/fetchUsersThunk";
 export * from "./api/addUserThunk";
 export * from "./api/removeUserThunk";
-export { useFetchAlbumsQuery } from "./api/albumsApi";
+export { useFetchAlbumsQuery, useAddAlbumMutation } from "./api/albumsApi";

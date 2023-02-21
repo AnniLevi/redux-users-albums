@@ -1,6 +1,7 @@
 import classNames from "classnames";
 
 function Skeleton({ times, className }) {
+  // times - number of skeleton boxes to show
   const outerClassNames = classNames(
     "relative",
     "overflow-hidden",
