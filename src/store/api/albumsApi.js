@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { faker } from "@faker-js/faker";
+import {pause} from "./fetchUsersThunk";
 
 const apiUrl = process.env.REACT_APP_API_URL;
 
@@ -11,6 +12,12 @@ const albumsApi = createApi({
   // a pre-configured version of fetch function
   baseQuery: fetchBaseQuery({
     baseUrl: apiUrl,
+
+    // add pause for development purposes
+    fetchFn: async (...args) => {
+      await pause(1000);
+      return fetch(...args)
+    }
   }),
   endpoints(builder) {
     return {

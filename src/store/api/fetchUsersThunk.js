@@ -20,7 +20,7 @@ const fetchUsersThunk = createAsyncThunk("users/fetch", async () => {
 });
 
 // add a pause for development purposes
-const pause = (duration) => {
+export const pause = (duration) => {
   return new Promise((resolve) => {
     setTimeout(resolve, duration);
   });
